@@ -2,6 +2,8 @@ package com.patientsapp.patientsdetails;
 
 import static android.app.ProgressDialog.show;
 
+import static com.patientsapp.patientsdetails.db.AppDatabase.*;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +13,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.processor.Context;
+
+import com.patientsapp.patientsdetails.db.AppDatabase;
+import com.patientsapp.patientsdetails.db.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView eRegister;
     boolean isValid = false;
     private int count = 6;
-
-
+    //List<User> dataList = new ArrayList<>();
+    //AppDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                     if(count == 0){
                         eLogin.setEnabled(false);
                     } else {
+
                         Toast.makeText(MainActivity.this, "Login was successful",
                                 Toast.LENGTH_SHORT).show();
 
@@ -87,4 +100,9 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
+
+//    private void loadUserList(){
+//        AppDatabase db = getInstance(this.getApplicationContext());
+//        List<User> dataList = db.UserDoa().getAll();
+//   }
 }
